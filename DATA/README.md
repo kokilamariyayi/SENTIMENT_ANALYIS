@@ -54,3 +54,10 @@ The original dataset contains the following 6 fields:
 ### Note
 The full Sentiment140 dataset is not included in this repository.
 Users are expected to download the dataset directly from Kaggle using the link above.
+
+### Xquik CSV Exports
+
+`xquik_sentiment140_adapter.py` can prepare Xquik tweet exports for the same
+notebook workflow. It writes the standard Sentiment140 headers and filters out
+neutral or unlabeled rows unless `--include-unlabeled` is passed for
+inference-only files.

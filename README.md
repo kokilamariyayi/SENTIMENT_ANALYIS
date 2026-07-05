@@ -18,6 +18,25 @@ Dataset: **1.6M tweets** (800K positive, 800K negative)
 
 ---
 
+## Xquik Export Prep
+
+Use `xquik_sentiment140_adapter.py` to convert Xquik tweet export CSVs into the
+same 6-column Sentiment140 shape used by the notebooks:
+
+```bash
+python xquik_sentiment140_adapter.py xquik_export.csv DATA/xquik_sentiment140.csv
+```
+
+The adapter maps common fields such as `tweet_id`, `created_at`, `full_text`,
+`username`, and `sentiment` to `target`, `ids`, `date`, `flag`, `user`, and
+`text`. Positive labels become `4`, negative labels become `0`, and neutral or
+unlabeled rows are skipped by default to keep binary training data compatible.
+
+Pass `--include-unlabeled` when preparing inference-only files that should keep
+rows without a binary target.
+
+---
+
 ## ⚙️ Tech Stack
 
 Python | Scikit-learn | HuggingFace Transformers | RoBERTa |
